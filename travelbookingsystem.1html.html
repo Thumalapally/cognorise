@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Booking System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-control {
+            width: 100%;
+            height: 40px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #3e8e41;
+        }
+        .result {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Travel Booking System</h2>
+        <form>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="destination">Destination:</label>
+                <select id="destination" class="form-control">
+                    <option value="New York">New York</option>
+                    <option value="Los Angeles">Los Angeles</option>
+                    <option value="Chicago">Chicago</option>
+                    <option value="Miami">Miami</option>
+                    <option value="Las Vegas">Las Vegas</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="departureDate">Departure Date:</label>
+                <input type="date" id="departureDate" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="returnDate">Return Date:</label>
+                <input type="date" id="returnDate" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="adults">Adults:</label>
+                <input type="number" id="adults" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="children">Children:</label>
+                <input type="number" id="children" class="form-control" required>
+            </div>
+            <button class="btn" id="book">Book Now</button>
+            <p class="result" id="result"></p>
+        </form>
+    </div>
+
+    <script>
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const phoneInput = document.getElementById('phone');
+        const destinationSelect = document.getElementById('destination');
+        const departureDateInput = document.getElementById('departureDate');
+        const returnDateInput = document.getElementById('returnDate');
+        const adultsInput = document.getElementById('adults');
+        const childrenInput = document.getElementById('children');
+        const bookButton = document.getElementById('book');
+        const resultElement = document.getElementById('result');
+
+        bookButton.addEventListener('click', () => {
+            const name = nameInput.value;
+            const email = emailInput.value;
+            const phone = phoneInput.value;
+            const destination = destinationSelect.value;
+            const departureDate = departureDateInput.value;
+            const returnDate = returnDateInput.value;
+            const adults = parseInt(adultsInput.value);
+            const children = parseInt(childrenInput.value);
+
+            if (name && email && phone && destination && departureDate && returnDate && adults && children) {
+                const bookingDetails = `Booking Details:
+                Name: ${name}
+                Email
