@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-control {
+            width: 100%;
+            height: 40px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #3e8e41;
+        }
+        .result {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Calculator</h2>
+        <form>
+            <div class="form-group">
+                <label for="num1">Number 1:</label>
+                <input type="number" id="num1" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="operator">Operator:</label>
+                <select id="operator" class="form-control">
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                    <option value="*">*</option>
+                    <option value="/">/</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="num2">Number 2:</label>
+                <input type="number" id="num2" class="form-control" required>
+            </div>
+            <button class="btn" id="calculate">Calculate</button>
+            <p class="result" id="result"></p>
+        </form>
+    </div>
+
+    <script>
+        const num1Input = document.getElementById('num1');
+        const operatorSelect = document.getElementById('operator');
+        const num2Input = document.getElementById('num2');
+        const calculateButton = document.getElementById('calculate');
+        const resultElement = document.getElementById('result');
+
+        calculateButton.addEventListener('click', () => {
+            const num1 = parseFloat(num1Input.value);
+            const operator = operatorSelect.value;
+            const num2 = parseFloat(num2Input.value);
+
+            let result;
+
+            switch (operator) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    result = num1 / num2;
+                    break;
+                default:
+                    result = 'Invalid operator';
+            }
+
+            resultElement.textContent = `Result: ${result}`;
+        });
+    </script>
+</body>
+</html>
