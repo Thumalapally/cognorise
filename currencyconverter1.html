@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+       .container {
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+       .form-group {
+            margin-bottom: 20px;
+        }
+       .form-control {
+            width: 100%;
+            height: 40px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
+       .btn {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+       .btn:hover {
+            background-color: #3e8e41;
+        }
+       .result {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Currency Converter</h2>
+        <form>
+            <div class="form-group">
+                <label for="amount">Enter amount:</label>
+                <input type="number" id="amount" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="fromCurrency">From:</label>
+                <select id="fromCurrency" class="form-control">
+                    <option value="USD">United States Dollar (USD)</option>
+                    <option value="EUR">Euro (EUR)</option>
+                    <option value="GBP">British Pound (GBP)</option>
+                    <option value="JPY">Japanese Yen (JPY)</option>
+                    <option value="CNY">Chinese Yuan (CNY)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="toCurrency">To:</label>
+                <select id="toCurrency" class="form-control">
+                    <option value="USD">United States Dollar (USD)</option>
+                    <option value="EUR">Euro (EUR)</option>
+                    <option value="GBP">British Pound (GBP)</option>
+                    <option value="JPY">Japanese Yen (JPY)</option>
+                    <option value="CNY">Chinese Yuan (CNY)</option>
+                </select>
+            </div>
+            <button class="btn" id="convert">Convert</button>
+            <p class="result" id="result"></p>
+        </form>
+    </div>
+
+    <script>
+        const amountInput = document.getElementById('amount');
+        const fromCurrencySelect = document.getElementById('fromCurrency');
+        const toCurrencySelect = document.getElementById('toCurrency');
+        const convertButton = document.getElementById('convert');
+        const resultElement = document.getElementById('result');
+
+        const currencyRates = {
+            USD: 1,
+            EUR: 0.84,
+            GBP: 0.76,
+            JPY: 109.23,
+            CNY: 6.93
+        };
+
+        convertButton.addEventListener('click', () => {
+            const amount = parseFloat(amountInput.value);
+            const fromCurrency = fromCurrencySelect.value;
+            const toCurrency = toCurrencySelect.value;
+
+            if (amount && fromCurrency && toCurrency) {
+                const fromRate = currencyRates[fromCurrency];
+                const toRate = currencyRates[toCurrency];
+                const result = (amount * toRate) / fromRate;
+
+                resultElement.textContent = `Result: ${result.toFixed(2)} ${toCurrency}`;
+            } else {
+                resultElement.textContent = 'Please enter valid input';
+            }
+        });
+    </script>
+</body>
+</html>
